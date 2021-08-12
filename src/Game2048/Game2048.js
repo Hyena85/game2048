@@ -36,7 +36,7 @@ class Game2048 {
         console.log(table);
     };
 
-    makeRandomBlock (gameTable) {
+    addRandomBlock (gameTable) {
         const table = [...gameTable];
         const emptyTable = [];
 
@@ -66,7 +66,7 @@ class Game2048 {
             }
         }
 
-        return this.makeRandomBlock(this.makeRandomBlock(table));
+        return this.addRandomBlock(this.addRandomBlock(table));
     }
 
 }
