@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRecoilValue} from "recoil";
 import Td from "./Td";
-import {tableState} from "./App";
+import { tableState } from "./state/game2048State";
 
 const Tr = ({ rowIndex }) => {
     const { tableSize } = useRecoilValue(tableState);

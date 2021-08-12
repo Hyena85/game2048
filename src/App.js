@@ -1,25 +1,10 @@
 import React, {useEffect} from 'react';
 import Table from "./Table";
 import {
-    atom, useRecoilState, useRecoilValue
+    useRecoilState, useRecoilValue
 } from "recoil";
-
 import Game2048 from "./Game2048/Game2048";
-
-export const tableState = atom({
-    key: 'tableState',
-    default: {
-        tableSize: {
-            row: 4,
-            col: 4,
-        }
-    },
-});
-
-export const gameTableState = atom({
-    key: 'gameTableState',
-    default: [],
-});
+import { tableState, gameTableState } from "./state/game2048State";
 
 const Keyboard = {
     Left: 37,
