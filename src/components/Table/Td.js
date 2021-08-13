@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from "recoil";
-import { gameTableState } from "./state/game2048State";
+import { gameTableState } from "../../states/game2048State";
 
 const Td = ({rowIndex, colIndex}) => {
     const gameTable = useRecoilValue(gameTableState);

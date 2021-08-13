@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import Table from "./Table";
+import Table from "./components/Table/Table";
 import {
     useRecoilState, useRecoilValue
 } from "recoil";
-import Game2048 from "./Game2048/Game2048";
-import { tableState, gameTableState } from "./state/game2048State";
+import Game2048 from "./services/Game2048";
+import { tableState, gameTableState } from "./states/game2048State";
 
 const Keyboard = {
     Left: 37,
@@ -24,7 +24,6 @@ const App = () => {
     };
 
     const onClickTest = () => {
-        // moveTable(gameTable);
         game.rotateLeft(gameTable);
     }
 
