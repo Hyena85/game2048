@@ -1,74 +1,96 @@
 class Game2048 {
-    rotateLeft(gameTable)  {
-        const table = [...gameTable];
+    getBoard(gameBoard) {
+        const table = [...gameBoard];
         let result = [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
             [0, 0, 0, 0],
             [0, 0, 0, 0]
         ];
-        const maxCol = table[0].length;
 
         table.forEach((row, i) => {
-            table[i] = [...gameTable[i]];
+            table[i] = [...gameBoard[i]];
             table[i].forEach((col, j) => {
-                const k = Math.abs(j - (maxCol - 1));
-                result[k][i] = table[i][j];
+                result[i][j] = table[i][j];
             });
         });
 
-        console.log('origin', table);
-        console.log('rotate', result);
-    };
-
-    moveTable(gameTable) {
-        const table = [...gameTable];
-
-        table.forEach((row, i) => {
-            table[i] = [...gameTable[i]];
-            const filteredRow = table[i].filter(v => v !== 0 );
-
-            table[i].forEach((col, j) => {
-                table[i][j] = filteredRow[j] || 0;
-            });
-        });
-
-        console.log(table);
-    };
-
-    addRandomBlock (gameTable) {
-        const table = [...gameTable];
-        const emptyTable = [];
-
-        table.forEach((row, i) => {
-            row.forEach((col, j) => {
-                if (table[i][j] === 0) {
-                    emptyTable.push([i, j]);
-                }
-            });
-        });
-
-        const randomBlock = emptyTable[Math.floor(Math.random() * emptyTable.length)];
-        table[randomBlock[0]] = [...gameTable[randomBlock[0]]];
-        table[randomBlock[0]][randomBlock[1]] = 2;
-
-        return table;
+        return result;
     }
 
     startGame(row, col) {
-        const table = [];
+        const board = [];
 
         for (let i = 0; i < row; i++) {
             const rowData = [];
-            table.push(rowData);
+            board.push(rowData);
             for (let j = 0; j < col; j++) {
                 rowData.push(0);
             }
         }
 
-        return this.addRandomBlock(this.addRandomBlock(table));
+        return this.addRandomBlock(this.addRandomBlock(board));
     }
 
+    rotateLeft(gameBoard, direction)  {
+        const board = this.getBoard(gameBoard);
+        // const count = 37- direction;
+        //
+        // let result = [
+        //     [0, 0, 0, 0],
+        //     [0, 0, 0, 0],
+        //     [0, 0, 0, 0],
+        //     [0, 0, 0, 0]
+        // ];
+        // const maxCol = table[0].length;
+        //
+        // table.forEach((row, i) => {
+        //     table[i] = [...gameTable[i]];
+        //     table[i].forEach((col, j) => {
+        //         const k = Math.abs(j - (maxCol - 1));
+        //         result[k][i] = table[i][j];
+        //     });
+        // });
+
+        board[1][1] = 2;
+
+        console.log('origin', board);
+        return board;
+    };
+
+    moveTable(gameBoard) {
+        const board = [...gameBoard];
+
+        board.forEach((row, i) => {
+            board[i] = [...gameBoard[i]];
+            const filteredRow = board[i].filter(v => v !== 0 );
+
+            board[i].forEach((col, j) => {
+                board[i][j] = filteredRow[j] || 0;
+            });
+        });
+
+        console.log(board);
+    };
+
+    addRandomBlock (gameBoard) {
+        const board = [...gameBoard];
+        const emptyBoard = [];
+
+        board.forEach((row, i) => {
+            row.forEach((col, j) => {
+                if (board[i][j] === 0) {
+                    emptyBoard.push([i, j]);
+                }
+            });
+        });
+
+        const randomBlock = emptyBoard[Math.floor(Math.random() * emptyBoard.length)];
+        board[randomBlock[0]] = [...gameBoard[randomBlock[0]]];
+        board[randomBlock[0]][randomBlock[1]] = 2;
+
+        return board;
+    }
 }
 
 export default Game2048;

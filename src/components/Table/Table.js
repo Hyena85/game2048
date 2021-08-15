@@ -1,14 +1,14 @@
 import React from 'react';
 import Tr from './Tr';
 import { useRecoilValue } from 'recoil';
-import { tableState } from "../../states/game2048State";
+import { boardState } from "../../states/game2048State";
 
 const Table = () => {
-    const { tableSize } = useRecoilValue(tableState);
+    const { boardSize } = useRecoilValue(boardState);
 
     return (
         <table>
-            {Array(tableSize.row).fill().map((tr, i) => <Tr key={i} rowIndex={i}/>)}
+            {Array(boardSize.row).fill().map((tr, i) => <Tr key={i} rowIndex={i}/>)}
         </table>
     );
 };

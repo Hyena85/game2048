@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import Table from "./components/Table/Table";
+import Table from "../components/Table/Table";
 import {
     useRecoilState, useRecoilValue
 } from "recoil";
-import Game2048 from "./services/Game2048";
-import { tableState, gameTableState } from "./states/game2048State";
+import Game2048 from "../services/Game2048";
+import { boardState, gameBoardState } from "../states/game2048State";
 
 const Keyboard = {
     Left: 37,
@@ -14,17 +14,18 @@ const Keyboard = {
 }
 
 const App = () => {
-    const [gameTable, setGameTable] = useRecoilState(gameTableState);
-    const { tableSize } = useRecoilValue(tableState);
-    const game = new Game2048();
+    const [gameBoard, setGameBoard] = useRecoilState(gameBoardState);
+    const { boardSize } = useRecoilValue(boardState);
+    const game2048 = new Game2048();
 
     const onClickStart = () => {
-        let table = game.startGame(tableSize.row, tableSize.col)
-        setGameTable(table);
+        let board = game2048.startGame(boardSize.row, boardSize.col)
+        setGameBoard(board);
     };
 
     const onClickTest = () => {
-        game.rotateLeft(gameTable);
+        let board = game2048.rotateLeft(gameBoard);
+        setGameBoard(board);
     }
 
     const onKeypress = (e) => {

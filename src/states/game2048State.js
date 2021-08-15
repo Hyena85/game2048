@@ -1,16 +1,16 @@
 import { atom } from "recoil";
 
-export const tableState = atom ({
-    key: 'tableSate',
+export const boardState = atom ({
+    key: 'boardState',
     default: {
-        tableSize: {
+        boardSize: {
             row: 4,
             col: 4,
         },
     },
 });
 
-export const gameTableState = atom({
-    key: 'gameTableState',
+export const gameBoardState = atom({
+    key: 'gameBoardState',
     default: [],
 });

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useRecoilValue } from "recoil";
-import { gameTableState } from "../../states/game2048State";
+import { gameBoardState } from "../../states/game2048State";
 
 const Td = ({rowIndex, colIndex}) => {
-    const gameTable = useRecoilValue(gameTableState);
+    const gameBoard = useRecoilValue(gameBoardState);
 
     return (
-        <td>{gameTable[0] && gameTable[rowIndex][colIndex]}</td>
+        <td>{gameBoard[0] && gameBoard[rowIndex][colIndex]}</td>
     );
 };
 
