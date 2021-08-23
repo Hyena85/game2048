@@ -34,7 +34,7 @@ class Game2048 {
 
     rotateLeft(gameBoard, direction)  {
         const board = this.getBoard(gameBoard);
-        // const count = 37- direction;
+        // const count = 37 - direction;
         //
         // let result = [
         //     [0, 0, 0, 0],
@@ -59,7 +59,7 @@ class Game2048 {
     };
 
     moveTable(gameBoard) {
-        const board = [...gameBoard];
+        const board = this.getBoard(gameBoard);
 
         board.forEach((row, i) => {
             board[i] = [...gameBoard[i]];
@@ -74,7 +74,7 @@ class Game2048 {
     };
 
     addRandomBlock (gameBoard) {
-        const board = [...gameBoard];
+        const board = this.getBoard(gameBoard);
         const emptyBoard = [];
 
         board.forEach((row, i) => {
@@ -86,7 +86,6 @@ class Game2048 {
         });
 
         const randomBlock = emptyBoard[Math.floor(Math.random() * emptyBoard.length)];
-        board[randomBlock[0]] = [...gameBoard[randomBlock[0]]];
         board[randomBlock[0]][randomBlock[1]] = 2;
 
         return board;

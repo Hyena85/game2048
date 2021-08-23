@@ -24,7 +24,7 @@ const App = () => {
     };
 
     const onClickTest = () => {
-        let board = game2048.rotateLeft(gameBoard);
+        let board = game2048.addRandomBlock(gameBoard);
         setGameBoard(board);
     }
 
